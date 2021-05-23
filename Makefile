@@ -8,14 +8,13 @@ test:
 	PYTHONPATH=.	py.test	--verbose	-s
 
 lint:
-	flake8	hello_word	test
+	flake8	hello_world	test
 
 run:
 	PYTHONPATH=.	FLASK_APP=hello_world	flask	run
 
 docker_build:
 	docker	build	-t	hello-world-printer	.
-
 docker_run:	docker_build
 	docker	run	\
 		--name	hello-world-printer-dev	\
@@ -30,3 +29,9 @@ docker_push: docker_build
 	docker tag hello-world-printer $(TAG); \
 	docker push $(TAG); \
 	docker logout;
+
+test_smoke:
+	curl --fail 127.0.0.1:5000	#ta komenda zakończy się błędem
+
+test_smoke1:
+	curl -s -o	/dev/null	-w	"%{http_code}"	--fail 127.0.0.1:5000
