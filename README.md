@@ -9,6 +9,18 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
   # tworzymy hermetyczne środowisko dla bibliotek aplikacji:
   $ python3 -m venv .venv
 
+
+  # aktualizacja pakietow do najnowszej wersji:
+  $ python3 -m pip install novas
+  $ python3 -m pip install --upgrade requests
+
+  # jesli chcemy korzystac z konkretnej wersji:
+  $ python3 -m pip install requests==2.6.0
+
+  # aby zobaczyć zainstalowane paczki:
+  $ pip show requests
+
+  
   # aktywowanie hermetycznego środowiska
   $ source .venv/bin/activate
   make deps
